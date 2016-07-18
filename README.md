@@ -41,13 +41,42 @@ resize.folder('./imgs', './output', [{
 
 Resize a single image and control what size the output is written at:
 
+### The basic control format for the single image resize
+
+
+
+
 ```js
-resize.image('./imgs/balloon.jpg', './output/balloon.jpg', {
-	width:600,
-	height:400
-}, function(err){
+
+const config_basic = {
+
+    size: {
+        width: 400,
+
+        //proportional based on height in px
+        height: 600
+    },
+
+    // jpg format or png format
+    format: "jpg",
+
+    //the quality from 0.0 to 1.0
+    quality: 1.0
+};
+
+
+/**
+ * process single image
+ * @param inpath path for input
+ * @param outpath path for output
+ * @param options the process configurations
+ * @param done the callback
+ */
+
+resize.image('./imgs/balloon.jpg', './output/balloon.jpg', config_basic, function(err){
 	console.log('image is resized')
 })
+
 ```
 
 If ./imgs was a folder with:
